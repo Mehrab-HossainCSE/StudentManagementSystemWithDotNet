@@ -25,6 +25,8 @@ namespace SMS.BAL.Mapper
                         FirstName = student.FirstName, // Ensure that these properties are correctly mapped
                         LastName = student.LastName,
                         Email = student.Email,
+                        Username=student.Username,
+                        Password=student.Password,
                     });
                 }
 
@@ -34,7 +36,7 @@ namespace SMS.BAL.Mapper
         
         public async Task<StudentDTO> ConvertIndivualStudent( Student student) 
         {
-            return new StudentDTO { Id = student.Id, FirstName = student.FirstName, LastName = student.LastName, Email = student.Email, };
+            return new StudentDTO { Id = student.Id, FirstName = student.FirstName, LastName = student.LastName, Email = student.Email, Username=student.Username,Password=student.Password};
 
         }
 
