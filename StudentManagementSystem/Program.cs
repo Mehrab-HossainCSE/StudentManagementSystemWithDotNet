@@ -13,9 +13,10 @@ namespace StudentManagementSystem
         {
             var attributes = Attribute.GetCustomAttributes(typeof(Program));
 
-            //var developerAttribute = attributes.OfType<DeveloperAttribute>().Single();
+            var developerAttribute = attributes.OfType<DeveloperAttribute>().Single();
 
-           // Console.WriteLine(developerAttribute.GetName());
+          
+            Console.WriteLine(developerAttribute.GetName());
 
 
             Course[] courses = CreateCourses();
