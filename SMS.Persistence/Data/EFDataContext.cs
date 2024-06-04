@@ -14,7 +14,7 @@ namespace SMS.Persistence.Data
         public EFDataContext(DbContextOptions<EFDataContext> options) : base(options) { }
        
         public DbSet<Student> Students {  get; set; }
-    
+      public DbSet<Course> courses { get; set; }
        
     }
 }

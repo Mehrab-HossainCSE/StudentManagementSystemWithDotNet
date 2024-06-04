@@ -16,5 +16,6 @@ namespace SMS.Persistence.Data
             optionsBuilder.UseInMemoryDatabase("InMemoryDb");
         }
         public DbSet<Student> Students { get; set; }
+        public DbSet<Course> courses { get; set; }
     }
 }

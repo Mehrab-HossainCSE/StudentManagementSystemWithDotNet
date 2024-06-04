@@ -13,11 +13,11 @@ namespace SMS.Persistence.Contacts
 
         //Task<List<Student>> GetAllStudentsAsync();
         Task<List<Student>> GetAllStudentsAsync(int pageNumber, int pageSize, string searchString, string sortBy);
-        Task<Student> GetStudentByIdAsync(int id);
+        Task<StudentCourseViewModel> GetStudentByIdAsync(int id);
         Task<Student> InsertStudentAsync(Student student);
         Task<Student> DeleteStudentAsync(int id);
         Task<Student> UpdateStudentAsync(int id,Student student);
-
+        Task AddCourseAsync(Course courser);
 
 
 

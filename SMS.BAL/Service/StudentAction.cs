@@ -40,18 +40,21 @@ namespace SMS.BAL.Service
             return studentDTOs;
         }
 
-        public async  Task<StudentDTO> GetStudentIdAsync(int id)
+        public async  Task<StudentCourseViewModel> GetStudentIdAsync(int id)
         {
            var indivualStudent= await _IRepository.GetStudentByIdAsync(id);
-            var studentDTos= await _StudentMapper.ConvertIndivualStudent(indivualStudent);
-            return studentDTos;
+           // var studentDTos= await _StudentMapper.ConvertIndivualStudent(indivualStudent);
+            return indivualStudent;
         }
         public async Task<Student> InsertAsync(Student student)
         {
             return await _IRepository.InsertStudentAsync(student);
            // throw new NotImplementedException();
         }
-
+      public async  Task AddCourse(Course course)
+        {
+            await _IRepository.AddCourseAsync(course);  
+        }
         public async Task<Student> UpdateAsync(int id, Student student)
         {
 

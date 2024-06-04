@@ -14,9 +14,10 @@ namespace SMS.BAL.Service
         
         Task<List<StudentDTO>> GetStudentsAsync(int pageNumber, int pageSize, string searchString, string sortBy);
       
-        Task<StudentDTO> GetStudentIdAsync(int id);
+        Task<StudentCourseViewModel> GetStudentIdAsync(int id);
         Task<Student> InsertAsync(Student student);
         Task<Student> DeleteAsync(int id);
         Task<Student> UpdateAsync(int id, Student student);
+        Task AddCourse(Course course);
     }
 }

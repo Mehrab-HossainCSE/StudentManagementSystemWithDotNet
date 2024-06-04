@@ -80,9 +80,23 @@ namespace SMS.Persistence.Repositories
         }
 
 
-        public async Task<Student> GetStudentByIdAsync(int id)
+        public async Task<StudentCourseViewModel> GetStudentByIdAsync(int id)
         {
-            return await _context.Students.FindAsync(id);
+            var studentCourse = await (from student in _context.Students
+                                       join course in _context.courses
+                                       on student.Id equals course.Id // Joining based on both student.Id and course.Id
+                                       where student.Id == id && course.Id == id // Filtering based on both IDs
+                                       select new StudentCourseViewModel
+                                       {
+                                           Id = student.Id,
+                                           Username = student.Username,
+                                           Password = student.Password,
+                                           FirstName = student.FirstName,
+                                           LastName = student.LastName,
+                                           Email = student.Email,
+                                           course = course.course // Assuming the course name is stored in the 'course' property of the Course entity
+                                       }).FirstOrDefaultAsync();
+            return studentCourse;
         }
         public async Task<Student> InsertStudentAsync(Student student)
         {
@@ -99,6 +113,20 @@ namespace SMS.Persistence.Repositories
             }
         }
 
+        public async Task AddCourseAsync(Course course)
+        {
+            try
+            {
+                _context.courses.Add(course);
+                await _context.SaveChangesAsync();
+                //return student;
+            }
+            catch (Exception ex)
+            {
+                // Log the exception here or handle it appropriately
+                throw; // Re-throw the exception to propagate it further
+            }
+        }
 
         public async Task<Student> UpdateStudentAsync(int id, Student student)
         {
